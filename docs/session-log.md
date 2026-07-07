@@ -46,3 +46,23 @@ conceptual layer).
 - Run first Workshop Review Panel pass against `docs/workshop-design.md`.
 - Build module skeleton + branding layer incorporating Review Panel findings.
 - Stand up build-log/Pages site skeleton.
+
+## 2026-07-07 - Workshop Review Panel pass + triaged fixes
+
+Ran the Workshop Review Panel (7 parallel personas) against `docs/workshop-design.md`. All seven
+returned distinct findings. Two cross-persona agreements: the empirical-tier gate is only concrete
+for 2 of 6 modules, and no cost/scope bound exists for scripted parameter-sweep exercises. Resolved
+one factual dispute during review (fetched Chroma's report directly — confirmed "coherent input
+degrades attention more than shuffled" is accurate as written) and one citation error (verified via
+`gh api` that the needle-in-a-haystack link pointed at an Arize fork, not Kamradt's original).
+Full report: `docs/review-panel/2026-07-07-initial-design.md`.
+
+User triaged: applied the cheap text-only fixes now (citation, etymology softening, `/compact`
+citation correction, terminology consistency, naming-rationale addition); deferred the structural
+findings (gate concreteness across all 6 modules, cost bound, capstone distinctness) to the Task 4
+module-skeleton pass. See `docs/decisions.md`'s 2026-07-07 entries for the full itemized list.
+
+### Next Actions
+
+- Build module/deliverables skeleton + branding layer, addressing the deferred structural findings.
+- Stand up build-log/Pages site skeleton.

@@ -3,13 +3,21 @@
 > **Half-Life.** Naming pass complete (candidates: Half-Life, Lost in the Middle, Context Rot,
 > Needle Native — all GitHub-slug-checked under `coderturtle` before presenting). This doc is
 > drafted after the name was chosen, so it uses the final name throughout.
+>
+> **Why "Half-Life," not "Context Rot":** both were real candidates, and "Context Rot" is the more
+> immediately self-explaining of the two (it's the literal, already-current practitioner term for
+> the phenomenon Module 03 targets — see the Chroma citation below). "Half-Life" was chosen instead
+> because it's the broader metaphor: a decay *rate*, not just a decay outcome — it names the thing
+> this workshop asks learners to actually measure (how fast does reliability decay, and as a
+> function of what) rather than just the symptom. "Rot" describes what happened; "half-life"
+> describes the empirical question the whole arc is built to answer.
 
 ## The one-line problem
 
 Practitioners who work with LLMs daily keep hitting the same moment — "I gave it all the
 information, why did it forget the thing I said at the top?" — and treat it as a mysterious model
 failure rather than a well-studied, named, *measurable* phenomenon. There's real research on
-exactly this (positional bias, context rot, compaction lossiness), and real vendor guidance on what
+exactly this (positional bias, context rot, compaction loss), and real vendor guidance on what
 to do about it, but almost nobody who hits the symptom has read the papers, and almost nobody who's
 read the papers has reproduced the finding themselves against their own tools. This workshop closes
 that gap empirically: learners don't read about context rot, they measure it, on their own harness,
@@ -33,7 +41,7 @@ required, scales without a cohort.
 Named separately, per this factory's standing rule since `borrow-native`:
 
 - **Subject:** context windows and their effect on LLM behavior — size limits, positional bias,
-  context rot, compaction/summarization loss, and what mitigates each.
+  context rot, compaction loss, and what mitigates each.
 - **Method:** harness-first empirical measurement. Every exercise runs through the learner's own
   Claude Code CLI/SDK in scripted, non-interactive form (`claude -p` or the Agent SDK driving
   repeatable runs with controlled variables), never a raw HTTP API script and never a manually
@@ -77,7 +85,7 @@ sequence from scratch, this workshop's arc is anchored to it directly:
   information sits at the start or end of a context and drops significantly when it's in the
   middle (the "U-shaped curve"). The foundational positional-bias result this workshop's Module 02
   reproduces directly.
-- **[Needle In A Haystack](https://github.com/Arize-ai/LLMTest_NeedleInAHaystack2)** methodology
+- **[Needle In A Haystack](https://github.com/gkamradt/needle-in-a-haystack)** methodology
   (Greg Kamradt, 2023) — the standard empirical technique for measuring exactly this: plant a
   specific fact ("the needle") at varying depths within a larger body of text (the "haystack") and
   measure retrieval accuracy across depth × length. This workshop's core experiment scaffold is
@@ -87,19 +95,25 @@ sequence from scratch, this workshop's arc is anchored to it directly:
   study: 18 models, controlled experiments showing accuracy degrades with length itself (not just
   position), that distractors and haystack structure matter non-uniformly, and — the counter­
   intuitive finding this workshop's Module 03 specifically targets — that *coherent, well-structured
-  input degrades attention more than shuffled input does*. This is the phenomenon this workshop is
-  named after, and the paper that gives "context rot" its name.
+  input degrades attention more than shuffled input does* (verified directly against the primary
+  source during this workshop's Review Panel pass, 2026-07-07 — see `docs/review-panel/2026-07-07-initial-design.md`).
+  This is the phenomenon Module 03 is built around, and the paper that popularized "context rot" as
+  a name for it (the term had informal currency in practitioner discourse before this report, which
+  gave it empirical grounding and wide circulation rather than coining it from nothing).
 - **[Effective context engineering for AI agents](https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents)**
   (Anthropic Engineering Blog, September 2025) — the practitioner-facing "what do you do about it"
   layer: compaction, sub-agent context isolation, structured note-taking, and retrieval as
   deliberate strategies for managing the token budget, not just prompting harder. Anchors this
   workshop's Module 05 (mitigations).
-- **[Claude Code's real `/compact` mechanism](https://platform.claude.com/docs/en/build-with-claude/compaction)**
-  — not a paper, but a real, inspectable product behavior: at ~95% context utilization, Claude Code
-  runs a summarization pass over the conversation, replacing full history with a condensed summary
-  that keeps file states/decisions/constraints but discards intermediate reasoning and verbose tool
-  output. Because the learner's own harness *is* this tool, Module 04 doesn't need a synthetic
-  compaction simulator — it measures the real thing.
+- **[Claude Code's real auto-compaction mechanism](https://code.claude.com/docs/en/how-claude-code-works)**
+  — not a paper, but a real, inspectable product behavior, per Anthropic's own documentation: as
+  context fills, Claude Code "clears older tool outputs first, then summarizes the conversation if
+  needed," preserving requests and key code snippets while detailed early instructions may be lost.
+  (The exact trigger threshold isn't published as a fixed percentage in this doc — third-party
+  write-ups citing a specific number, e.g. ~95%, are community observation, not an official figure;
+  this workshop should measure the real trigger point empirically rather than assume a cited number.)
+  Because the learner's own harness *is* this tool, Module 04 doesn't need a synthetic compaction
+  simulator — it measures the real thing.
 
 **Differentiator against all of these:** none of them are hands-on for a practitioner — the papers
 are read, not reproduced; the blog post is prescriptive, not verified; Kamradt's methodology is run
@@ -118,7 +132,7 @@ requirement — not just a position in a plausible-looking list.
 | 01 | Context Window Mechanics | none (assumes daily LLM/agent use) | Background: tokens, attention cost, KV cache — why "bigger window" isn't free. First hands-on task: inspect your own harness's real-time context/token usage. |
 | 02 | Positional Bias — Lost in the Middle | 01 (needs token/window vocabulary to design a controlled test) | Liu et al. 2023; Kamradt's needle-in-a-haystack methodology |
 | 03 | Context Rot at Scale | 02 (isolating length-as-a-variable requires already controlling for position) | Chroma's Context Rot report — length-driven degradation, distractor/structure effects, the coherent-input-degrades-more-than-shuffled finding |
-| 04 | Compaction & Compression Mechanics | 01 (needs window vocabulary); benefits from 02+03's intuition about what's lost, but not hard-blocked by them | Claude Code's real `/compact` behavior — what survives a real compaction vs. what's discarded |
+| 04 | Compaction Mechanics | 01 (needs window vocabulary); benefits from 02+03's intuition about what's lost, but not hard-blocked by them | Claude Code's real `/compact` behavior — what survives a real compaction vs. what's discarded |
 | 05 | Mitigation Strategies | 02, 03, 04 (you need to have measured a failure mode before you can measure whether a fix helps it) | Anthropic's "Effective context engineering for AI agents" — retrieval, sub-agent isolation, structured note-taking |
 | 06 | Synthesis capstone | all of the above | Learner designs and runs an *original* experiment on a phenomenon not explicitly covered (e.g. attention sink, distractor semantic similarity, multi-document order sensitivity), and defends the result |
 
@@ -149,7 +163,7 @@ at content-building time (not this design pass), but the intended *shape* per mo
 | 01 | Context Window Mechanics | A personal "what's actually in my context right now" inspection habit/Skill |
 | 02 | Positional Bias | A reusable needle-in-haystack test harness script, parameterized for the learner's own tasks |
 | 03 | Context Rot at Scale | A "safe context budget" measurement script — the learner's own empirical answer to "how much of this model's window can I actually trust," not the marketed number |
-| 04 | Compaction & Compression Mechanics | A pre/post-compaction recall probe the learner can re-run on any real session |
+| 04 | Compaction Mechanics | A pre/post-compaction recall probe the learner can re-run on any real session |
 | 05 | Mitigation Strategies | A decision guide: which mitigation (retrieval, sub-agent isolation, structured notes) fits which failure mode, built from the learner's own before/after measurements |
 | 06 | Synthesis capstone | A personal context-diagnosis playbook compressing the whole arc, built from a defended original experiment, not a substitute for it |
 
