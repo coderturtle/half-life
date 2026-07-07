@@ -16,3 +16,33 @@ Project scaffolded as **factory-output**. Purpose: Empirical, harness-driven wor
 - Define brief and first phase plan
 - Add first implementation
 - Record initial decisions
+
+## 2026-07-07 - Naming pass + workshop design draft
+
+Concept interview held first (interview-me skill) to nail down: empirical/measurable checker
+(confirmed — like Rust's compiler, but for context behavior), audience (agent-literate practitioners
++ LLM-app builders), harness-first method (Claude Code CLI/SDK scripted runs, not raw API calls),
+standalone-but-complementary relationship to `terminal-velocity`.
+
+Naming pass run: 10 candidates generated, all GitHub-slug-checked under `coderturtle` before
+presenting. Human picked **Half-Life** from a 4-option shortlist. Full rename executed and
+authorized: local dir, GitHub repo (`gh repo rename`), git remote, `.hekton/project.yaml`,
+repo-local mind-palace mirror, and the live vault card at
+`~/vaults/hekton-mind-palace/20-projects/factory-output/half-life`.
+
+Real research pass run (WebSearch) for the canonical-curriculum-anchor step: confirmed Lost in the
+Middle (Liu et al.), Kamradt's needle-in-a-haystack methodology, Chroma's Context Rot report (July
+2025), Anthropic's "Effective context engineering for AI agents" (Sept 2025), and Claude Code's real
+`/compact` mechanism all as live, real sources. Drafted `docs/workshop-design.md`: 6-module arc,
+harness-first empirical method, two-tier gate design (empirical measurement + Coachgremlin
+conceptual layer).
+
+### Decisions Made
+
+- See `docs/decisions.md` 2026-07-07 entries (naming, design doc).
+
+### Next Actions
+
+- Run first Workshop Review Panel pass against `docs/workshop-design.md`.
+- Build module skeleton + branding layer incorporating Review Panel findings.
+- Stand up build-log/Pages site skeleton.
