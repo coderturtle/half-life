@@ -1,16 +1,16 @@
-project_name: context-workshop
-project_title: "Context Workshop"
+project_name: half-life
+project_title: "Half-Life"
 classification: factory-output
 status: active
 lifecycle_stage: active
-local_repo_path: /Users/hekton/Development/hekton/factory-output/context-workshop
-mind_palace_path: 20-projects/factory-output/context-workshop
+local_repo_path: /Users/hekton/Development/hekton/factory-output/half-life
+mind_palace_path: 20-projects/factory-output/half-life
 owner: coderturtle
 created_date: 2026-07-07
 promotion_target: none
 privacy_boundary: public
 github_account: coderturtle
-github_remote_url: "git@github.com-coderturtle:coderturtle/context-workshop.git"
+github_remote_url: "git@github.com-coderturtle:coderturtle/half-life.git"
 vault_mutation_allowed: false
 # version: applies to platform components (alpha|beta|v1.0|v1.x|v2.0) and factory outputs (v0|beta|v1.0|v1.x)
 # Labs do not carry version numbers. Set by the Promotion Agent on first promotion; human confirms.

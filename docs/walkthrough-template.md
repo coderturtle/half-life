@@ -1,7 +1,7 @@
 # Walkthrough: {Session Title}
 
 **Date:** YYYY-MM-DD
-**Project:** Context Workshop
+**Project:** Half-Life
 **Prompt / Session:** N
 
 ## What changed in plain English
@@ -10,7 +10,7 @@
 
 ## The simple analogy
 
-## How this ties to Context Workshop
+## How this ties to Half-Life
 
 ## How this ties to the Hekton factory vision
 

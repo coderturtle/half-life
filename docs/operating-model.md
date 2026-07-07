@@ -1,4 +1,4 @@
-# Operating Model: Context Workshop
+# Operating Model: Half-Life
 
 ## Classification
 

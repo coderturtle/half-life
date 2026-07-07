@@ -1,4 +1,4 @@
-# Session Log: Context Workshop
+# Session Log: Half-Life
 
 ## 2026-07-07 - Initial scaffold
 

@@ -4,9 +4,9 @@ classification: factory-output
 status: active
 lifecycle_stage: active
 created: 2026-07-07
-project: context-workshop
-title: Context Workshop
-mind_palace_path: 20-projects/factory-output/context-workshop
+project: half-life
+title: Half-Life
+mind_palace_path: 20-projects/factory-output/half-life
 owner: coderturtle
 promotion_target: none
 privacy_boundary: public
@@ -14,7 +14,7 @@ vault_mutation_allowed: false
 version: ""
 ---
 
-# Context Workshop
+# Half-Life
 
 > Empirical, harness-driven workshop teaching why LLMs degrade over long context (context rot, compaction, lost-in-the-middle) via scripted Claude Code CLI/SDK experiments with real pass/fail scoring.
 
@@ -39,4 +39,4 @@ Active — scaffolded 2026-07-07
 
 ## Factory Repo
 
-`/Users/hekton/Development/hekton/factory-output/context-workshop`
+`/Users/hekton/Development/hekton/factory-output/half-life`

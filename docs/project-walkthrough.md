@@ -1,4 +1,4 @@
-# Context Workshop — Plain-English Project Walkthrough
+# Half-Life — Plain-English Project Walkthrough
 
 ## What this project is in one paragraph
 
