@@ -1,12 +1,12 @@
-# CLAUDE.md — Context Workshop
+# CLAUDE.md — Half-Life
 
 ## Project Classification
 
 - **Type:** factory-output
-- **Name:** context-workshop
-- **Title:** Context Workshop
-- **Local repo:** /Users/hekton/Development/hekton/factory-output/context-workshop
-- **Vault control plane:** /Users/hekton/vaults/hekton-mind-palace/20-projects/factory-output/context-workshop
+- **Name:** half-life
+- **Title:** Half-Life
+- **Local repo:** /Users/hekton/Development/hekton/factory-output/half-life
+- **Vault control plane:** /Users/hekton/vaults/hekton-mind-palace/20-projects/factory-output/half-life
 - **Lifecycle stage:** active
 - **Promotion target:** none
 - **Privacy boundary:** public
@@ -21,7 +21,7 @@ Specific to this project:
 - Work on a short-lived branch `agent/<agent-name>/<task-slug>` — never commit directly to `main`/`master`; open a PR for review. See `~/hekton/.rules/git-contract.md`.
 - Classification is **factory-output** — respect the corresponding naming and path conventions
 - Inspect `.hekton/project.yaml` before making structural changes
-- Do not create files outside `/Users/hekton/Development/hekton/factory-output/context-workshop` without confirmation
+- Do not create files outside `/Users/hekton/Development/hekton/factory-output/half-life` without confirmation
 - Do not write to the vault without explicit authorisation (`vault_mutation_allowed: false`)
 - Record all design decisions in `docs/decisions.md`
 - Keep risks current in `docs/risks.md` and `.hekton/risk-register.yaml`

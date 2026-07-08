@@ -1,4 +1,4 @@
-# Retire / Promote Review: Context Workshop
+# Retire / Promote Review: Half-Life
 
 Review default: factory output does not automatically promote to platform, but learnings may become templates or platform backlog.
 

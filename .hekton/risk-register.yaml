@@ -1,5 +1,5 @@
 risk_register_version: 1
-project_name: context-workshop
+project_name: half-life
 created_date: 2026-07-07
 
 risks:
@@ -13,5 +13,29 @@ risks:
     mitigation: "Run governance preflight and end-session review during first material session."
     raised_date: 2026-07-07
     reviewed_date: 2026-07-07
+    links:
+      - "docs/risks.md"
+  - id: RISK-0002
+    title: "site/'s adapted Astro starter carries inherited npm vulnerabilities"
+    category: dependency
+    likelihood: high
+    impact: low
+    status: open
+    owner: coderturtle
+    mitigation: "Triage before first real Pages deploy: accept as static-build-safe with documented rationale, or take the breaking astro@7 upgrade and re-validate."
+    raised_date: 2026-07-08
+    reviewed_date: 2026-07-08
+    links:
+      - "docs/risks.md"
+  - id: RISK-0003
+    title: "GitHub Actions Pages deploy unproven until human-triggered"
+    category: deployment
+    likelihood: high
+    impact: medium
+    status: open
+    owner: coderturtle
+    mitigation: "Human enables Pages (Settings > Pages > Source: GitHub Actions) and triggers workflow_dispatch; confirm the real deploy succeeds."
+    raised_date: 2026-07-08
+    reviewed_date: 2026-07-08
     links:
       - "docs/risks.md"

@@ -1,11 +1,11 @@
-# CODEX.md — Context Workshop
+# CODEX.md — Half-Life
 
 ## Project Classification
 
 - **Type:** factory-output
-- **Name:** context-workshop
-- **Local repo:** /Users/hekton/Development/hekton/factory-output/context-workshop
-- **Vault control plane:** /Users/hekton/vaults/hekton-mind-palace/20-projects/factory-output/context-workshop
+- **Name:** half-life
+- **Local repo:** /Users/hekton/Development/hekton/factory-output/half-life
+- **Vault control plane:** /Users/hekton/vaults/hekton-mind-palace/20-projects/factory-output/half-life
 - **Lifecycle stage:** active
 - **Promotion target:** none
 - **Privacy boundary:** public

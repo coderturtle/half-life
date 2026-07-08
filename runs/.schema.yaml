@@ -1,15 +1,15 @@
 # Machine-readable run ledger schema.
 # Read by hekton-status and cross-project dashboard aggregators.
-# Scaffolded 2026-07-07 — run standardise-runs-ledger.py --project context-workshop --force to enrich.
+# Scaffolded 2026-07-07 — run standardise-runs-ledger.py --project half-life --force to enrich.
 schema_version: "1"
-project: context-workshop
+project: half-life
 project_type: factory-output
 id_prefix: CW
 task_types:
   - task
   - review
   - session
-run_description: "A unit of work in Context Workshop that produces a traceable result requiring human review."
+run_description: "A unit of work in Half-Life that produces a traceable result requiring human review."
 fields:
   run_id: string
   project: string

@@ -1,10 +1,10 @@
-# AGENTS.md — Context Workshop
+# AGENTS.md — Half-Life
 
 ## Project Classification
 
 - **Type:** factory-output
-- **Local repo:** /Users/hekton/Development/hekton/factory-output/context-workshop
-- **Vault:** /Users/hekton/vaults/hekton-mind-palace/20-projects/factory-output/context-workshop
+- **Local repo:** /Users/hekton/Development/hekton/factory-output/half-life
+- **Vault:** /Users/hekton/vaults/hekton-mind-palace/20-projects/factory-output/half-life
 - **Vault mutation allowed:** false
 - **Owner:** coderturtle
 
@@ -16,7 +16,7 @@ This project is classified as **factory-output**. All agents must:
 1. Work on a short-lived `agent/<agent-name>/<task-slug>` branch and never commit directly to `main`/`master` — see `~/hekton/.rules/git-contract.md`
 2. Read `.hekton/project.yaml` before making structural changes
 3. Read `docs/project-walkthrough.md` before structural changes
-4. Stay within `/Users/hekton/Development/hekton/factory-output/context-workshop` for code changes
+4. Stay within `/Users/hekton/Development/hekton/factory-output/half-life` for code changes
 5. Update `docs/decisions.md` for any significant design decisions
 6. Append to `docs/session-log.md` at end of every session
 7. Update `docs/next-actions.md` when the work queue changes

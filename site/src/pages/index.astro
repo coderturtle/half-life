@@ -1,0 +1,120 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../components/layout/BaseLayout.astro";
+
+const REPO = "https://github.com/coderturtle/half-life";
+const base = import.meta.env.BASE_URL;
+
+const recentEntries = (await getCollection("buildlog", ({ data }) => !data.draft))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 3);
+---
+
+<BaseLayout
+  title="Half-Life: guide"
+  description="Don't take the paper's word for it - measure your own model's context decay, then prove your fix actually works."
+>
+  <h1 class="text-3xl font-bold">Half-Life</h1>
+  <p class="mt-2 text-lg opacity-80">
+    Don't take the paper's word for it - measure your own model's context decay, then prove your
+    fix actually works.
+  </p>
+
+  <div class="post-body mt-10">
+    <p>
+      This page is the guide for anyone landing on the deployed site rather than the repo
+      directly. The workshop itself, six modules covering context window mechanics through
+      mitigation strategies plus a synthesis capstone, lives in the <a href={REPO}>repo</a>, whose
+      own README covers the same ground in more detail once you've cloned it. Nothing here
+      substitutes for cloning it; this is orientation, not the content.
+    </p>
+
+    <h2>Two gates, not one</h2>
+    <p>
+      Every exercise runs through your own coding-agent harness (Claude Code, Codex, or
+      equivalent), scripted and non-interactive. An <strong>empirical gate</strong> checks first:
+      a scripted, scored measurement against a stated threshold, no judgment call. Then a{" "}
+      <strong>conceptual gate</strong>: Coachgremlin, this workshop's teaching agent (a role you
+      run yourself, inside your own harness, not a hosted service), checks whether you designed a
+      genuinely single-variable experiment and can explain the result you got. A passing
+      measurement is necessary, never sufficient on its own.
+    </p>
+
+    <h2>Real research, reproduced by you, not just cited</h2>
+    <p>
+      This workshop's arc is anchored to real, current material: Lost in the Middle (Liu et al.),
+      Greg Kamradt's needle-in-a-haystack methodology, Chroma's Context Rot report, and
+      Anthropic's own context-engineering guidance. None of it is hands-on for a practitioner; the
+      papers are read, not reproduced. This workshop's bet is that turning "trust the paper" into
+      "reproduce it yourself, against your own tool" is a genuine addition. See the repo's{" "}
+      <code>docs/workshop-design.md</code> for the full curriculum-anchor research.
+    </p>
+
+    <h2>What you walk away with</h2>
+    <p>
+      Two different things get built during each module: your own judgment, and a reusable
+      artifact your agent can load next time. See each module's own README (once authored) for
+      the evidence behind its specific gate.
+    </p>
+    <ul>
+      <li>
+        <strong>You</strong> get practiced judgment: reading a measured result and correctly
+        explaining why it looks the way it does, designing a genuinely single-variable experiment,
+        and knowing how much of a model's context window you can actually trust for a given task.
+      </li>
+      <li>
+        <strong>Your agent</strong> gets the packaged takeaways: a context-inspection habit, a
+        reusable needle-in-a-haystack test script, a safe-context-budget measurement script, a
+        pre/post-compaction recall probe, a mitigation decision guide, and a personal
+        context-diagnosis playbook tying it all together.
+      </li>
+    </ul>
+
+    <h2>The runbook</h2>
+    <ol>
+      <li>
+        Prerequisites: comfortable with git, the CLI, and reading a diff; already using a
+        coding-agent harness regularly; willing to run scripted, non-interactive harness
+        invocations against your own API usage.
+      </li>
+      <li>
+        Clone it: <code>git clone {REPO}.git</code>
+      </li>
+      <li>
+        Start at <code>modules/README.md</code>. It has the full arc, in order, and a table of
+        what each module's gate requires and what you keep from it.
+      </li>
+      <li>
+        Work through the six modules in order: context window mechanics, positional bias,
+        length-driven context rot, compaction mechanics, mitigation strategies, then the synthesis
+        capstone. Each states a hard prerequisite on an earlier one.
+      </li>
+      <li>
+        No module completes by reading it. Every module states a required gate, checked first
+        empirically, then conceptually. If a module ever reduces to "read this, then move on," or
+        a link here is broken, that's a defect: <a href={`${REPO}/issues`}>open an issue</a>.
+      </li>
+    </ol>
+  </div>
+
+  {
+    recentEntries.length > 0 && (
+      <>
+        <h2 class="mt-14 text-xl font-semibold">Recent from the build log</h2>
+        <ul class="mt-6 space-y-4">
+          {recentEntries.map((entry) => (
+            <li>
+              <a href={`${base}build-log/${entry.id}/`} class="entry-card">
+                <p class="entry-title text-lg font-semibold">{entry.data.title}</p>
+                <p class="mt-1 text-sm opacity-80">{entry.data.description}</p>
+              </a>
+            </li>
+          ))}
+        </ul>
+        <p class="mt-6 text-sm opacity-70">
+          See the <a href={`${base}build-log/`} class="underline">full index</a>.
+        </p>
+      </>
+    )
+  }
+</BaseLayout>
