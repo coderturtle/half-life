@@ -66,3 +66,34 @@ module-skeleton pass. See `docs/decisions.md`'s 2026-07-07 entries for the full 
 
 - Build module/deliverables skeleton + branding layer, addressing the deferred structural findings.
 - Stand up build-log/Pages site skeleton.
+
+## 2026-07-08 - Module skeleton + brand layer
+
+Built the full module skeleton (`modules/README.md` arc overview + 6 module READMEs, 8-part
+template each: question, arc position, learning objectives, exercise-material pointer, required
+gate, takeaway, stop condition, skeleton-only banner), addressing every structural finding deferred
+from the Review Panel pass: a concrete empirical-tier threshold per module (all 6, not just 2), a
+workshop-wide cost/scope guardrail (`modules/README.md`'s "Cost & scope guardrails" section),
+Module 02's gate explicitly treating a flat/null curve as valid, and the capstone's gate requiring
+reuse of Module 04's or Module 05's methodology rather than repeating an earlier sweep pattern.
+
+Built `docs/brand.md` (adapted from `borrow-native`), carrying forward this workshop's own
+Skeptical Critic and AI/ML Practitioner findings as permanent hard rules (never state an unverified
+numeric threshold, never claim a canonical finding "will reproduce" without hedging). Split learner-
+facing `README.md` from internal `docs/maintainers.md`. Wired `scripts/check-brand-lint.sh` into the
+pre-push hook (warn-only), adapted from `borrow-native`'s script.
+
+Brand lint caught a real em-dash habit across all 6 module files and `README.md` on first run;
+fixed via bulk substitution, then manually corrected two spots where the automated fix left a line
+starting with `- ` that would have rendered as an accidental markdown bullet list on GitHub. Brand
+lint clean after the fix.
+
+### Decisions Made
+
+- See `docs/decisions.md`'s 2026-07-08 entry.
+
+### Next Actions
+
+- Stand up the build-log/Pages site skeleton (Task 5, the Workshop Gremlin's last roster item).
+- Content-building (Coachgremlin, one module at a time) is next but outside this Gremlin's own
+  Completion Condition.
