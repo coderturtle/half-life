@@ -125,3 +125,38 @@ clean throughout.
 ### Next Actions
 
 - Stand up the build-log/Pages site skeleton (Task 5, the Workshop Gremlin's last roster item).
+
+## 2026-07-08 - Build-log/Pages site (Task 5)
+
+Stood up `site/`: Astro adapted directly from `borrow-native`'s starter (Content Layer API reading
+`docs/build-log/` in place, `base`-aware links throughout, same Tailwind/typography tokens). Wrote
+Half-Life's own `index.astro` guide content (two-gate explanation, real-research framing, runbook)
+rather than reusing Borrow Native's Rust-specific copy. New favicon (½ glyph, matching the
+decay-rate theme). `.github/workflows/deploy-pages.yml`, `workflow_dispatch`-only per the Human
+Gate.
+
+Locally validated: `npm install` (4 inherited vulnerabilities from the starter, same as
+`terminal-velocity`/`borrow-native`'s own first install, not yet triaged - RISK-0002), `npm run
+build` clean, `astro check` clean (0 errors/warnings/hints), and confirmed directly in the built
+HTML that every internal link carries the `/half-life/` base correctly.
+
+Wrote the first build-log entry deliberately (not generated from session logs): covers this run's
+two real methodology findings from the module-skeleton Review Panel pass (Module 04's confound, the
+banned-phrase module rename) as the actual story of this run, matching `borrow-native`'s own
+build-log discipline.
+
+This closes the Workshop Gremlin's own Completion Condition - all five roster steps (scaffold,
+naming, first review pass, module skeleton/branding, build-log/Pages site) are now done. Content-
+building (Coachgremlin) and the human-confirmed first live deploy are explicitly outside this
+Gremlin's stop condition.
+
+### Decisions Made
+
+- See `docs/decisions.md`'s third 2026-07-08 entry.
+
+### Next Actions
+
+- Get a human to enable GitHub Pages and trigger the first real `workflow_dispatch` deploy
+  (RISK-0003).
+- Triage the 4 inherited npm vulnerabilities before that first real deploy (RISK-0002).
+- Coachgremlin content-building begins with Module 01, per the existing plan.

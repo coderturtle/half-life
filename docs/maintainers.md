@@ -35,7 +35,15 @@ This repo has two goals:
   deferred to the module-skeleton pass.
 - 2026-07-08 — Module skeleton (`modules/`), brand layer (`docs/brand.md`), and this maintainers
   split are done, addressing the deferred structural findings directly in each module's gate design.
-  Build-log/Pages site is the remaining Completion Condition item — see [Next Actions](next-actions.md).
+- 2026-07-08 — Re-ran the [Workshop Review Panel](review-panel/2026-07-08-module-skeleton.md)
+  against the new module skeleton/brand/README — caught two real methodology bugs in Module 04
+  (a confound, a synthetic-content loophole) and the workshop's own banned phrase in Module 03's
+  title. All 10 findings applied; Module 03 renamed to "Length-Driven Context Rot."
+- 2026-07-08 — Build-log/Pages site (`site/`, Astro adapted from `borrow-native`'s starter) stood
+  up and locally validated (`npm run build`/`astro check` clean, base-aware links confirmed). First
+  build-log entry written. **This closes the Workshop Gremlin's own Completion Condition** — all
+  five roster steps done. First real Pages deploy and npm-vulnerability triage remain human-gated —
+  see [Next Actions](next-actions.md) and `docs/risks.md`'s RISK-0002/RISK-0003.
 
 ## Documentation Contract
 
