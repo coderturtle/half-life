@@ -7,11 +7,12 @@ beat the naive baseline I already measured?
 
 ## Where it sits in the arc
 
-Fifth module. Prerequisite: [Module 02](../02-positional-bias/README.md),
-[Module 03](../03-context-rot-at-scale/README.md), and
+Fifth module. Prerequisite: **at least one of** [Module 02](../02-positional-bias/README.md),
+[Module 03](../03-length-driven-context-rot/README.md), or
 [Module 04](../04-compaction-mechanics/README.md) - a mitigation's "it helped" claim is meaningless
 without an already-measured baseline failure to compare against, and this module reuses whichever
-baseline (positional, length-driven, or compaction-driven) the learner chooses to target. Next:
+single baseline (positional, length-driven, or compaction-driven) the learner chooses to target; it
+does not require having completed all three. Next:
 [Module 06, Synthesis capstone](../06-synthesis-capstone/README.md), which must reuse this module's
 or Module 04's methodology directly, not just repeat a depth/length sweep. See
 [`modules/README.md`](../README.md) for the full arc and why this order.

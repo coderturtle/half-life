@@ -38,9 +38,12 @@ research this arc is grounded in.
 - **Empirical tier.** A scripted session progressively loads content of known, independently
   measured size (e.g. files of a stated token count via a separate counting script), checkpointing
   `/context`'s self-reported usage after each load. Pass: self-reported usage tracks the
-  independently measured total within a stated tolerance (e.g. ±10%) across at least 3 checkpoints.
-  This is a read-only inspection exercise - no parameter sweep, no cost-bound concern the way
-  Modules 02-03 have.
+  independently measured total within a stated tolerance across at least 3 checkpoints. A ±10%
+  tolerance is this design pass's working placeholder, not yet validated against a real run -
+  Coachgremlin should tighten or loosen it once real `/context` output has actually been measured,
+  same as the workshop-wide run-count cap in [`modules/README.md`](../README.md). This is a
+  read-only inspection exercise - no parameter sweep, no cost-bound concern the way Modules 02-03
+  have.
 - **Conceptual tier (Coachgremlin).** Confirms the learner can correctly attribute where the budget
   went (not just report a total number) and can state, without looking it up, why doubling the
   window size doesn't double how much of it is usable reliably - a claim this module doesn't yet

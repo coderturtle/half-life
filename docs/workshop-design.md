@@ -131,10 +131,10 @@ requirement — not just a position in a plausible-looking list.
 |---|---|---|---|
 | 01 | Context Window Mechanics | none (assumes daily LLM/agent use) | Background: tokens, attention cost, KV cache — why "bigger window" isn't free. First hands-on task: inspect your own harness's real-time context/token usage. |
 | 02 | Positional Bias — Lost in the Middle | 01 (needs token/window vocabulary to design a controlled test) | Liu et al. 2023; Kamradt's needle-in-a-haystack methodology |
-| 03 | Context Rot at Scale | 02 (isolating length-as-a-variable requires already controlling for position) | Chroma's Context Rot report — length-driven degradation, distractor/structure effects, the coherent-input-degrades-more-than-shuffled finding |
+| 03 | Length-Driven Context Rot | 02 (isolating length-as-a-variable requires already controlling for position) | Chroma's Context Rot report — length-driven degradation, distractor/structure effects, the coherent-input-degrades-more-than-shuffled finding |
 | 04 | Compaction Mechanics | 01 (needs window vocabulary); benefits from 02+03's intuition about what's lost, but not hard-blocked by them | Claude Code's real `/compact` behavior — what survives a real compaction vs. what's discarded |
 | 05 | Mitigation Strategies | 02, 03, 04 (you need to have measured a failure mode before you can measure whether a fix helps it) | Anthropic's "Effective context engineering for AI agents" — retrieval, sub-agent isolation, structured note-taking |
-| 06 | Synthesis capstone | all of the above | Learner designs and runs an *original* experiment on a phenomenon not explicitly covered (e.g. attention sink, distractor semantic similarity, multi-document order sensitivity), and defends the result |
+| 06 | Synthesis Capstone | all of the above | Learner designs and runs an *original* experiment on a phenomenon not explicitly covered (e.g. attention sink, distractor semantic similarity, multi-document order sensitivity), and defends the result |
 
 ### Why this order
 
@@ -162,10 +162,10 @@ at content-building time (not this design pass), but the intended *shape* per mo
 |---|---|---|
 | 01 | Context Window Mechanics | A personal "what's actually in my context right now" inspection habit/Skill |
 | 02 | Positional Bias | A reusable needle-in-haystack test harness script, parameterized for the learner's own tasks |
-| 03 | Context Rot at Scale | A "safe context budget" measurement script — the learner's own empirical answer to "how much of this model's window can I actually trust," not the marketed number |
+| 03 | Length-Driven Context Rot | A "safe context budget" measurement script — the learner's own empirical answer to "how much of this model's window can I actually trust," not the marketed number |
 | 04 | Compaction Mechanics | A pre/post-compaction recall probe the learner can re-run on any real session |
 | 05 | Mitigation Strategies | A decision guide: which mitigation (retrieval, sub-agent isolation, structured notes) fits which failure mode, built from the learner's own before/after measurements |
-| 06 | Synthesis capstone | A personal context-diagnosis playbook compressing the whole arc, built from a defended original experiment, not a substitute for it |
+| 06 | Synthesis Capstone | A personal context-diagnosis playbook compressing the whole arc, built from a defended original experiment, not a substitute for it |
 
 ## Build-in-public build log
 

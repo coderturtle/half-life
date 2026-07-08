@@ -6,11 +6,16 @@ actually works.
 ## What this is
 
 A self-paced workshop that teaches why LLMs degrade over long context - positional bias, length-
-driven context rot, and compaction loss - to people who already work with LLMs daily. Every
-exercise runs through your own coding-agent harness, scripted and non-interactive: you plant a
+driven context rot, and compaction loss - to people who already work with LLMs daily. One real,
+cited number to start with: Chroma's 2025 Context Rot report found accuracy dropped 30+ points when
+a relevant fact sat in positions 5-15 of a 20-document context, on frontier models, not the older
+ones long-context research usually gets blamed on. This workshop doesn't ask you to trust that
+number: it has you produce your own version of it, against your own harness.
+
+Every exercise runs through your own coding-agent harness, scripted and non-interactive: you plant a
 controlled variable (a needle's depth, a context's length, a fact placed before a real compaction
 event), measure it against a stated threshold, and get a real number back. First, an **empirical
-gate**: does the measured result clear the bar, yes or no. Second, a **conceptual check** from
+tier**: does the measured result clear the bar, yes or no. Second, a **conceptual tier** from
 Coachgremlin, this workshop's teaching agent (a role you run yourself, inside your own harness, not
 a hosted service): did you actually design a single-variable experiment, and can you correctly
 explain the result you got. A passing measurement is necessary but never sufficient on its own.
@@ -52,7 +57,7 @@ skipping ahead means comparing against a baseline you haven't actually measured 
 
 Window mechanics has no prerequisite - everything later needs this vocabulary to state what's being
 varied. Positional bias depends on it, and is the narrowest, most direct reproduction of prior
-research. Context rot at scale depends on positional bias already being controlled for, since
+research. Length-driven context rot depends on positional bias already being controlled for, since
 isolating "does length alone matter" requires holding position fixed first. Compaction mechanics
 depends only on window vocabulary, but is sequenced after both because what's lost during compaction
 is far more legible once you've already measured what's lost from position and length. Mitigations
@@ -64,7 +69,7 @@ curriculum research behind it: [`modules/README.md`](modules/README.md).
 ## What you keep
 
 Every module leaves you with something, not just a passed check: a context-inspection habit, a
-reusable needle-in-haystack test script, a safe-context-budget measurement script, a pre/post-
+reusable needle-in-a-haystack test script, a safe-context-budget measurement script, a pre/post-
 compaction recall probe, a mitigation decision guide, and a personal context-diagnosis playbook
 tying it all together. See [`modules/README.md`](modules/README.md#what-you-keep) for the full list.
 
@@ -95,7 +100,7 @@ issue](https://github.com/coderturtle/half-life/issues).
 
 ## Key docs
 
-- [Workshop Design](docs/workshop-design.md): audience, format, empirical-gate teaching method, full
+- [Workshop Design](docs/workshop-design.md): audience, format, empirical-tier teaching method, full
   module arc, canonical-curriculum anchor
 - [Maintainers](docs/maintainers.md): internal/agent-facing docs, classification, documentation
   contract

@@ -19,8 +19,10 @@ means anything. See [`modules/README.md`](../README.md) for the full arc and why
 ## Learning objectives (placeholder: finalized when content is authored)
 
 - Trigger a real compaction event in your own harness (not a simulated one) and observe it directly.
-- Design a pre/post-compaction recall probe that isolates what a specific planted fact's survival
-  depends on.
+- Design a three-arm recall probe (pre-compaction, post-compaction, and a same-distance
+  compaction-not-triggered control) that isolates compaction-specific loss from ordinary
+  long-context decay - the same effect Modules 02-03 already measure - rather than conflating the
+  two.
 - Report a numeric recall delta across repeated trials, accounting for the real run-to-run variance
   inherent in an LLM-scored measurement - this module's gate is explicitly *not* deterministic the
   way a compiler is, and the rubric must say so.
@@ -38,16 +40,25 @@ percentage as fact.
 ## Required gate (placeholder: shape decided now, real rubric written later)
 
 - **Empirical tier.** A real scripted session plants a specific fact, then drives past the harness's
-  actual compaction trigger (however that's reached in practice - filling context with real or
-  synthetic tool output, not a synthetic compaction simulator), then probes recall of the planted
-  fact. Compares against a control probe run pre-compaction in an otherwise-identical session.
-  Repeated across at least 3 trials to account for the measurement's own run-to-run variance. Pass:
-  a numeric recall accuracy delta is reported (pre vs. post), with the variance across trials also
-  reported, not just a single-run number presented as settled.
+  actual compaction trigger (however that's reached in practice - filling context with **synthetic,
+  non-sensitive** tool output only, per the workshop-wide synthetic-content guardrail in
+  [`modules/README.md`](../README.md), never real logs/configs/credential-shaped data even to hit
+  the token count faster; not a synthetic compaction simulator), then probes recall of the planted
+  fact. This is compared against **two** controls, not one: (a) a pre-compaction probe in an
+  otherwise-identical session, and (b) a same-token-distance probe where compaction is *not*
+  triggered (e.g. auto-compact disabled for that run, or a large enough context window that the
+  token count never reaches the trigger) - the third arm is what actually isolates
+  compaction-specific loss from ordinary long-context decay (the effect Modules 02-03 already
+  measure); without it, a measured recall drop can't be attributed to compaction at all. Repeated
+  across at least 3 trials per arm to account for the measurement's own run-to-run variance. Pass: a
+  numeric recall accuracy delta is reported for both comparisons (pre vs. post-compaction, and
+  post-compaction vs. same-distance-no-compaction), with the variance across trials also reported,
+  not just a single-run number presented as settled.
 - **Conceptual tier (Coachgremlin).** Confirms the learner can name which categories of content
   survived vs. were dropped (matching or contradicting Claude Code's own documented "clears tool
-  outputs first, then summarizes" behavior) and that they didn't treat a single trial as conclusive
-  given the measurement's inherent variance.
+  outputs first, then summarizes" behavior), that they didn't treat a single trial as conclusive
+  given the measurement's inherent variance, and that their conclusion is actually attributed to
+  compaction specifically (via the third control arm) rather than to distance alone.
 
 ## Takeaway
 
@@ -56,7 +67,8 @@ later. Packaged by Coachgremlin once the rubric is met.
 
 ## Stop condition (placeholder)
 
-The learner's probe clears the empirical tier (a reported delta across ≥3 trials) and Coachgremlin
+The learner's probe clears the empirical tier (both reported deltas, each backed by ≥3 trials per
+arm) and Coachgremlin
 confirms the conceptual tier. Reading this page does not count: advancement requires a real
 compaction event triggered and measured in the learner's own harness.
 

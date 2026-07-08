@@ -55,7 +55,7 @@ and are exempt.
 
 ## Key Docs
 
-- [Workshop Design](workshop-design.md) — audience, format, empirical-gate teaching method,
+- [Workshop Design](workshop-design.md) — audience, format, empirical-tier teaching method,
   curriculum-anchored module arc
 - [Brand / Style Layer](brand.md) — voice, hard rules, visual identity
 - [Workshop Review Panel Report](review-panel/2026-07-07-initial-design.md) — 7-persona critique of

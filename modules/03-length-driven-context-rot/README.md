@@ -1,4 +1,4 @@
-# Module 03: Context Rot at Scale
+# Module 03: Length-Driven Context Rot
 
 ## The question this module answers
 
@@ -19,8 +19,8 @@ length alone. See [`modules/README.md`](../README.md) for the full arc and why t
 
 - Design an experiment that varies length while holding position fixed, using a depth already
   characterized in Module 02.
-- Run a capped, scripted sweep across multiple context lengths and produce a real length-vs-
-  accuracy result.
+- Run a capped, scripted sweep across multiple context lengths, at least 2 trials per length, and
+  produce a real length-vs-accuracy result, not a single-run number presented as a rate.
 - Run and honestly report a coherent-vs-shuffled haystack comparison, including the
   counterintuitive possibility (confirmed directly against Chroma's primary source during this
   workshop's own Review Panel pass - see `docs/review-panel/2026-07-07-initial-design.md`) that
@@ -38,13 +38,19 @@ curriculum-anchor section.
 
 - **Empirical tier.** A scripted, non-interactive sweep (capped at ≤20 total invocations per the
   workshop-wide cost guardrail - see [`modules/README.md`](../README.md)) varies total context
-  length across at least 3 points spanning a 4x range, at a depth already characterized in Module
-  02, scoring retrieval accuracy per length. Separately, one coherent-vs-shuffled haystack
-  comparison at a single fixed length, also scored. Pass: both results are produced and reported -
-  the direction of the coherent-vs-shuffled result is not itself gated; producing and honestly
-  reporting the real measurement is (do not assume it must match Chroma's finding without checking).
+  length across at least 3 points spanning a 4x range, at a fixed depth (see the depth-selection
+  rule below), with at least 2 trials per length to distinguish a real trend from single-run noise,
+  scoring retrieval accuracy per length. Separately, one coherent-vs-shuffled haystack comparison at
+  a single fixed length, also scored. Pass: both results are produced and reported - the direction
+  of the coherent-vs-shuffled result is not itself gated; producing and honestly reporting the real
+  measurement is (do not assume it must match Chroma's finding without checking).
+  - **Depth-selection rule:** hold the length sweep at Module 02's *lowest-scoring* depth (the
+    worst-case position measured there), so a real length effect isn't masked by an accidentally
+    benign position. If Module 02's own result was flat (a validly allowed outcome there), default
+    to the 50% (middle) depth, matching Lost in the Middle's own worst-case finding.
 - **Conceptual tier (Coachgremlin).** Confirms position was genuinely held fixed across the length
-  sweep (not accidentally reintroduced as a second variable), and that the learner reports the
+  sweep (not accidentally reintroduced as a second variable), that the learner used the
+  depth-selection rule rather than an arbitrary depth, and that the learner reports the
   coherent-vs-shuffled result honestly, whichever direction it comes out, with a real attempted
   explanation rather than a shrug.
 

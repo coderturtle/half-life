@@ -9,7 +9,7 @@ context, on the harness I actually use?
 
 Second module. Prerequisite: [Module 01, Context Window Mechanics](../01-context-window-mechanics/README.md),
 since you need token/window vocabulary to even state what's being varied before designing a
-controlled test. Next: [Module 03, Context Rot at Scale](../03-context-rot-at-scale/README.md), which depends
+controlled test. Next: [Module 03, Length-Driven Context Rot](../03-length-driven-context-rot/README.md), which depends
 on this module's depth variable already being controlled for before introducing length as a second
 variable. See [`modules/README.md`](../README.md) for the full arc and why this order.
 
@@ -33,21 +33,25 @@ for the standard depth-sweep technique this module's exercise is built directly 
 
 ## Required gate (placeholder: shape decided now, real rubric written later)
 
-- **Empirical tier.** A scripted, non-interactive harness sweep (capped at ≤20 total invocations per
-  the workshop-wide cost guardrail - see [`modules/README.md`](../README.md)) plants one factual
-  needle at 5 stated depths (0%, 25%, 50%, 75%, 100%) across 2 context lengths, scoring retrieval
-  accuracy per depth against the known correct answer. Pass: the learner produces a real depth-vs-
-  accuracy result for both lengths - the result *shape* (U-curve, flat, or something else) is not
-  itself gated; producing and correctly reporting a real measurement is.
-- **Conceptual tier (Coachgremlin).** Confirms the experiment held every variable but depth
-  constant (same haystack content, same needle, same length within each sweep), and that the
-  learner's explanation matches whichever result they actually got - including defending a flat
-  result with a real hypothesis (e.g. citing model-generation improvements since 2023) rather than
-  treating it as an exercise failure.
+- **Empirical tier.** A scripted, non-interactive harness sweep plants one factual needle at 5
+  stated depths (0%, 25%, 50%, 75%, 100%) across 2 context lengths - 10 cells - with exactly 2
+  trials per cell (20 runs total, using the full ≤20-invocation cap from the workshop-wide cost
+  guardrail - see [`modules/README.md`](../README.md)), scoring retrieval accuracy per depth
+  against the known correct answer. Pass: the learner produces a real depth-vs-accuracy result for
+  both lengths, each cell backed by 2 trials rather than a single run reported as a rate - the
+  result *shape* (U-curve, flat, or something else) is not itself gated; producing and correctly
+  reporting a real measurement is.
+- **Conceptual tier (Coachgremlin).** Confirms the learner recorded their depth-curve prediction
+  (per the first learning objective above) *before* running the sweep, not just rationalized after
+  seeing the result; confirms the experiment held every variable but depth constant (same haystack
+  content, same needle, same length within each sweep); and confirms the learner's explanation
+  matches whichever result they actually got - including defending a flat result with a real
+  hypothesis (e.g. citing model-generation improvements since 2023) rather than treating it as an
+  exercise failure.
 
 ## Takeaway
 
-A reusable needle-in-haystack test harness script, parameterized so the learner can point it at
+A reusable needle-in-a-haystack test harness script, parameterized so the learner can point it at
 their own tasks later. Packaged by Coachgremlin once the rubric is met.
 
 ## Stop condition (placeholder)
