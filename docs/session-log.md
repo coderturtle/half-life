@@ -97,3 +97,31 @@ lint clean after the fix.
 - Stand up the build-log/Pages site skeleton (Task 5, the Workshop Gremlin's last roster item).
 - Content-building (Coachgremlin, one module at a time) is next but outside this Gremlin's own
   Completion Condition.
+
+## 2026-07-08 - Module-skeleton Review Panel re-run + fixes
+
+User asked whether the Review Panel had actually critiqued the new module skeleton/brand/README
+content (it hadn't - only the earlier design-doc-only pass existed). Re-ran the full 7-persona
+panel against this new content, per the panel's own "significant content revision" re-run trigger.
+
+This pass caught real methodology bugs, not just polish: two personas independently found distinct
+problems with Module 04's compaction gate (a confound between compaction-specific loss and ordinary
+long-context decay, and a synthetic-content loophole in its own exercise text), and the Skeptical
+Critic caught the workshop's own banned phrase ("at scale") sitting in Module 03's title. Full
+report: `docs/review-panel/2026-07-08-module-skeleton.md`.
+
+User chose to apply all 10 findings now. Fixed: Module 04's confound (added a third control arm) and
+content loophole, renamed Module 03 ("Length-Driven Context Rot"), repeat-trial guidance for
+Modules 02/03, a concrete depth-selection rule for Module 03, Module 05's overstated prerequisite,
+a human-checkpoint requirement on the cost cap, a gate check for Module 02's prediction objective,
+Module 01's tolerance hedge, terminology consistency, and one real cited number added to the README.
+Verified all internal markdown links still resolve after the module 03 directory rename. Brand lint
+clean throughout.
+
+### Decisions Made
+
+- See `docs/decisions.md`'s second 2026-07-08 entry.
+
+### Next Actions
+
+- Stand up the build-log/Pages site skeleton (Task 5, the Workshop Gremlin's last roster item).
