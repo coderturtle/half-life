@@ -9,8 +9,10 @@
 - [ ] Get a human to enable GitHub Pages (Settings > Pages > Source: GitHub Actions) and trigger
       the first real `workflow_dispatch` deploy — the Actions run itself is still unproven until
       triggered. See RISK-0003 in `docs/risks.md`.
-- [ ] Triage the 4 inherited npm vulnerabilities in `site/`'s Astro starter before that first real
-      deploy (RISK-0002 in `docs/risks.md`).
+- [x] Triage the 4 inherited npm vulnerabilities in `site/`'s Astro starter — done 2026-07-08,
+      closed as accepted risk (none reachable given `output: "static"`; the `astro@7` upgrade
+      path is known but requires a real `@astrojs/tailwind` → Tailwind-Vite-plugin migration, not
+      a version bump). See RISK-0002 in `docs/risks.md` for the full reasoning.
 - [ ] Register in the mind-palace Gremlin Registry once vault mutation is authorised for that
       purpose.
 

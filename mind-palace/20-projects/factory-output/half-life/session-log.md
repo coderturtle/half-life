@@ -97,3 +97,98 @@ lint clean after the fix.
 - Stand up the build-log/Pages site skeleton (Task 5, the Workshop Gremlin's last roster item).
 - Content-building (Coachgremlin, one module at a time) is next but outside this Gremlin's own
   Completion Condition.
+
+## 2026-07-08 - Module-skeleton Review Panel re-run + fixes
+
+User asked whether the Review Panel had actually critiqued the new module skeleton/brand/README
+content (it hadn't - only the earlier design-doc-only pass existed). Re-ran the full 7-persona
+panel against this new content, per the panel's own "significant content revision" re-run trigger.
+
+This pass caught real methodology bugs, not just polish: two personas independently found distinct
+problems with Module 04's compaction gate (a confound between compaction-specific loss and ordinary
+long-context decay, and a synthetic-content loophole in its own exercise text), and the Skeptical
+Critic caught the workshop's own banned phrase ("at scale") sitting in Module 03's title. Full
+report: `docs/review-panel/2026-07-08-module-skeleton.md`.
+
+User chose to apply all 10 findings now. Fixed: Module 04's confound (added a third control arm) and
+content loophole, renamed Module 03 ("Length-Driven Context Rot"), repeat-trial guidance for
+Modules 02/03, a concrete depth-selection rule for Module 03, Module 05's overstated prerequisite,
+a human-checkpoint requirement on the cost cap, a gate check for Module 02's prediction objective,
+Module 01's tolerance hedge, terminology consistency, and one real cited number added to the README.
+Verified all internal markdown links still resolve after the module 03 directory rename. Brand lint
+clean throughout.
+
+### Decisions Made
+
+- See `docs/decisions.md`'s second 2026-07-08 entry.
+
+### Next Actions
+
+- Stand up the build-log/Pages site skeleton (Task 5, the Workshop Gremlin's last roster item).
+
+## 2026-07-08 - Build-log/Pages site (Task 5)
+
+Stood up `site/`: Astro adapted directly from `borrow-native`'s starter (Content Layer API reading
+`docs/build-log/` in place, `base`-aware links throughout, same Tailwind/typography tokens). Wrote
+Half-Life's own `index.astro` guide content (two-gate explanation, real-research framing, runbook)
+rather than reusing Borrow Native's Rust-specific copy. New favicon (½ glyph, matching the
+decay-rate theme). `.github/workflows/deploy-pages.yml`, `workflow_dispatch`-only per the Human
+Gate.
+
+Locally validated: `npm install` (4 inherited vulnerabilities from the starter, same as
+`terminal-velocity`/`borrow-native`'s own first install, not yet triaged - RISK-0002), `npm run
+build` clean, `astro check` clean (0 errors/warnings/hints), and confirmed directly in the built
+HTML that every internal link carries the `/half-life/` base correctly.
+
+Wrote the first build-log entry deliberately (not generated from session logs): covers this run's
+two real methodology findings from the module-skeleton Review Panel pass (Module 04's confound, the
+banned-phrase module rename) as the actual story of this run, matching `borrow-native`'s own
+build-log discipline.
+
+This closes the Workshop Gremlin's own Completion Condition - all five roster steps (scaffold,
+naming, first review pass, module skeleton/branding, build-log/Pages site) are now done. Content-
+building (Coachgremlin) and the human-confirmed first live deploy are explicitly outside this
+Gremlin's stop condition.
+
+### Decisions Made
+
+- See `docs/decisions.md`'s third 2026-07-08 entry.
+
+### Next Actions
+
+- Get a human to enable GitHub Pages and trigger the first real `workflow_dispatch` deploy
+  (RISK-0003).
+- Triage the 4 inherited npm vulnerabilities before that first real deploy (RISK-0002).
+- Coachgremlin content-building begins with Module 01, per the existing plan.
+
+## 2026-07-08 - RISK-0002 triage (npm vulnerabilities)
+
+Checked exploitability directly rather than assuming: grepped `site/src/` for `define:vars` and
+server-island usage (none), confirmed `astro.config.mjs` sets `output: "static"` (no
+server-rendering runtime), confirmed no user-controlled input reaches slot names or spread props
+anywhere in this codebase, and confirmed the GitHub Actions workflow only runs `npm run build`
+(never `astro dev`, so the Windows-dev-server esbuild advisory doesn't apply either). None of the 5
+advisories are reachable given this site's actual configuration.
+
+Attempted the real fix anyway on a new branch (`agent/claude/vuln-triage`): `npm audit fix --force`
+upgrades cleanly to `astro@7.0.6` with 0 vulnerabilities, but `npm run build` then failed twice -
+first on the removed legacy content-config path (mechanical fix: move `src/content/config.ts` to
+`src/content.config.ts`), then on `@astrojs/tailwind` itself, which throws
+`Cannot read properties of undefined (reading 'postcss')` on Astro 7. Astro moved away from
+bundling a Tailwind integration in favor of Tailwind's own Vite plugin - this isn't a drop-in
+version bump, it's a real integration migration. Reverted the upgrade attempt back to the exact
+state merged in Task 5 (confirmed via `git diff` against HEAD showing zero net change), reinstalled
+original dependencies, and re-validated `npm run build`/`astro check` both clean.
+
+Closed RISK-0002 as an accepted risk with the verified reasoning above, rather than forcing a
+Tailwind-migration project into what should be a bounded triage task. Recorded the known upgrade
+path in `docs/risks.md` for whenever `site/`'s dependency stack gets touched deliberately.
+
+### Decisions Made
+
+- See `docs/decisions.md`'s 2026-07-08 RISK-0002 entry.
+
+### Next Actions
+
+- Get a human to enable GitHub Pages and trigger the first real `workflow_dispatch` deploy
+  (RISK-0003) - the only remaining open item before this workshop's scaffolding phase is fully done.

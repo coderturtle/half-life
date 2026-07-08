@@ -20,9 +20,9 @@ risks:
     category: dependency
     likelihood: high
     impact: low
-    status: open
+    status: closed
     owner: coderturtle
-    mitigation: "Triage before first real Pages deploy: accept as static-build-safe with documented rationale, or take the breaking astro@7 upgrade and re-validate."
+    mitigation: "Triaged 2026-07-08: none of the 5 advisories are reachable (no define:vars/server-islands, output:static, dev server never runs in CI). Upgrade attempt (npm audit fix --force) reverted after it broke @astrojs/tailwind on Astro 7 - a real Tailwind-Vite-plugin migration, not a version bump. Accepted as-is; re-open if output mode changes from static."
     raised_date: 2026-07-08
     reviewed_date: 2026-07-08
     links:

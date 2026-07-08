@@ -160,3 +160,35 @@ Gremlin's stop condition.
   (RISK-0003).
 - Triage the 4 inherited npm vulnerabilities before that first real deploy (RISK-0002).
 - Coachgremlin content-building begins with Module 01, per the existing plan.
+
+## 2026-07-08 - RISK-0002 triage (npm vulnerabilities)
+
+Checked exploitability directly rather than assuming: grepped `site/src/` for `define:vars` and
+server-island usage (none), confirmed `astro.config.mjs` sets `output: "static"` (no
+server-rendering runtime), confirmed no user-controlled input reaches slot names or spread props
+anywhere in this codebase, and confirmed the GitHub Actions workflow only runs `npm run build`
+(never `astro dev`, so the Windows-dev-server esbuild advisory doesn't apply either). None of the 5
+advisories are reachable given this site's actual configuration.
+
+Attempted the real fix anyway on a new branch (`agent/claude/vuln-triage`): `npm audit fix --force`
+upgrades cleanly to `astro@7.0.6` with 0 vulnerabilities, but `npm run build` then failed twice -
+first on the removed legacy content-config path (mechanical fix: move `src/content/config.ts` to
+`src/content.config.ts`), then on `@astrojs/tailwind` itself, which throws
+`Cannot read properties of undefined (reading 'postcss')` on Astro 7. Astro moved away from
+bundling a Tailwind integration in favor of Tailwind's own Vite plugin - this isn't a drop-in
+version bump, it's a real integration migration. Reverted the upgrade attempt back to the exact
+state merged in Task 5 (confirmed via `git diff` against HEAD showing zero net change), reinstalled
+original dependencies, and re-validated `npm run build`/`astro check` both clean.
+
+Closed RISK-0002 as an accepted risk with the verified reasoning above, rather than forcing a
+Tailwind-migration project into what should be a bounded triage task. Recorded the known upgrade
+path in `docs/risks.md` for whenever `site/`'s dependency stack gets touched deliberately.
+
+### Decisions Made
+
+- See `docs/decisions.md`'s 2026-07-08 RISK-0002 entry.
+
+### Next Actions
+
+- Get a human to enable GitHub Pages and trigger the first real `workflow_dispatch` deploy
+  (RISK-0003) - the only remaining open item before this workshop's scaffolding phase is fully done.
