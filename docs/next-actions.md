@@ -36,3 +36,7 @@
 - Author Modules 02-06 (Coachgremlin's job, one at a time) — each must produce a real dry run
   evidencing whether the empirical-tier/conceptual-tier gate split actually works in practice, an
   open bet this design pass explicitly left untested.
+
+## Session Update: 2026-07-18 — Fixed a live, fully-broken custom domain; first deploy this repo has ever had
+
+- [ ] Coachgremlin content-building begins: Module 01 (Context Window Mechanics)

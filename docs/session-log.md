@@ -238,3 +238,28 @@ confirm the site is actually live via direct `curl`, not just a green workflow r
 ### Mind-palace updated
 
 No — not yet authorised this session.
+---
+
+## Session: Fixed a live, fully-broken custom domain; first deploy this repo has ever had
+
+**Date:** 2026-07-18 20:59
+
+### What Changed
+
+half-life.coderturtle.io was 404ing on every path, and this repo had never had a single deploy run at all - found while building coderturtle.io's Workshops page. Fixed astro.config.mjs/public/CNAME, triggered and confirmed the first real deploy ever, enabled the push trigger, closed RISK-0003
+
+### Decisions
+
+See docs/decisions.md's 2026-07-18 entry
+
+### Assumptions
+
+None new
+
+### Risks
+
+RISK-0003 closed
+
+### Next Actions
+
+- [ ] Coachgremlin content-building begins: Module 01 (Context Window Mechanics)
