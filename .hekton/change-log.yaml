@@ -17,3 +17,18 @@ changes:
       status: not_required
     links:
       - "docs/session-log.md"
+
+  - id: CHG-7a113b03
+    date: 2026-07-18
+    title: "Custom domain cutover and first-ever deploy"
+    intent: "half-life.coderturtle.io was 404ing on every path, and this repo had never had a single deploy run at all - found while building coderturtle.io's Workshops page. Fixed astro.config.mjs/public/CNAME, triggered and confirmed the first real deploy ever, enabled the push trigger, closed RISK-0003"
+    changed_by: "Claude Sonnet 5"
+    change_type: build
+    risk_level: low
+    validation:
+      - "not recorded"
+    approvals:
+      required: false
+      status: not_required
+    links:
+      - "docs/session-log.md"
