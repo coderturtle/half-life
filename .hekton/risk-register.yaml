@@ -32,10 +32,10 @@ risks:
     category: deployment
     likelihood: high
     impact: medium
-    status: open
+    status: closed
     owner: coderturtle
-    mitigation: "Human enables Pages (Settings > Pages > Source: GitHub Actions) and triggers workflow_dispatch; confirm the real deploy succeeds."
+    mitigation: "Triggered 2026-07-18 (workflow_dispatch, run 29643482348); build+deploy both green, confirmed live via curl. Same session also fixed a real, live custom-domain 404 predating this risk (site/astro.config.mjs never cut over from project-page hosting) - see docs/decisions.md's 2026-07-18 entry."
     raised_date: 2026-07-08
-    reviewed_date: 2026-07-08
+    reviewed_date: 2026-07-18
     links:
       - "docs/risks.md"

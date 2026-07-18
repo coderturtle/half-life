@@ -13,9 +13,10 @@
       custom domain returned 404 on every path, and `site/astro.config.mjs` still had `base:
       "/half-life/"` with no `site/public/CNAME` — fixed 2026-07-18, same shape as
       `terminal-velocity`/`closed-book`/`borrow-native`.
-- [ ] **Still open:** no deploy run has ever actually happened (`gh run list` returns empty) — the
-      Actions run itself remains unproven until a human triggers the first real `workflow_dispatch`
-      deploy under the now-corrected config. See RISK-0003 in `docs/risks.md`.
+- [x] First real deploy ever triggered and confirmed live 2026-07-18 (`workflow_dispatch`, run
+      29643482348) — `curl` against `half-life.coderturtle.io` returns real rendered content, not
+      a placeholder/404. RISK-0003 resolved. `deploy-pages.yml`'s `push` trigger enabled the same
+      day so subsequent build-log updates auto-publish.
 - [x] Triage the 4 inherited npm vulnerabilities in `site/`'s Astro starter — done 2026-07-08,
       closed as accepted risk (none reachable given `output: "static"`; the `astro@7` upgrade
       path is known but requires a real `@astrojs/tailwind` → Tailwind-Vite-plugin migration, not
