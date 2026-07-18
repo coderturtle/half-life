@@ -192,3 +192,49 @@ path in `docs/risks.md` for whenever `site/`'s dependency stack gets touched del
 
 - Get a human to enable GitHub Pages and trigger the first real `workflow_dispatch` deploy
   (RISK-0003) - the only remaining open item before this workshop's scaffolding phase is fully done.
+
+---
+
+## 2026-07-18 - Fixed a fully-broken custom domain, found while building coderturtle.io's Workshops page
+
+**Agent:** Claude
+
+### What changed
+
+- Building a Workshops listing page on `coderturtle.io` surfaced a real, live bug: `curl` against
+  `half-life.coderturtle.io` returned 404 on every path (plain HTTP too, not a cert issue), and the
+  `coderturtle.github.io/half-life/` fallback 301-redirected back into the same 404.
+- Root cause: GitHub Pages' `cname`/domain-verification were already live and `"verified"` (set at
+  some point since 2026-07-08's entries, never recorded), but `site/astro.config.mjs` still had
+  `base: "/half-life/"` and no `site/public/CNAME` existed — the repo-side cutover was never done.
+- Fixed on branch `agent/claude/custom-domain-cutover`: `astro.config.mjs` (`site`/`base` to the
+  domain root), new `site/public/CNAME`, `.github/workflows/deploy-pages.yml`'s stale comment
+  corrected. `npm run build` reconfirmed clean, `dist/CNAME` present.
+- Also confirmed via `gh run list`: this repo has **never had a deploy run at all** — RISK-0003's
+  "get a human to trigger the first deploy" item was never actually done, despite Pages/domain
+  config existing. Still open, see Next Actions.
+
+### Decisions Made
+
+See `docs/decisions.md`'s 2026-07-18 entry.
+
+### Risks
+
+No new RISK entry — RISK-0003 (first deploy still pending) stays open, now with a corrected config
+underneath it.
+
+### Next Actions
+
+Review/merge the cutover PR, then trigger the genuinely-first `workflow_dispatch` deploy and
+confirm the site is actually live via direct `curl`, not just a green workflow run.
+
+### Validation
+
+- Real `curl` checks (custom domain, plain HTTP, project-page redirect target) confirmed the break
+  before fixing.
+- `npm run build` clean; `dist/CNAME` = `half-life.coderturtle.io`.
+- `gh run list --workflow=deploy-pages.yml` — empty, confirming no deploy has ever run.
+
+### Mind-palace updated
+
+No — not yet authorised this session.

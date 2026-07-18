@@ -5,14 +5,13 @@ import tailwind from "@astrojs/tailwind";
 
 // https://astro.build/config
 export default defineConfig({
-  // Default GitHub Pages project hosting: coderturtle.github.io/half-life/.
-  // No custom domain/DNS for this workshop (unlike terminal-velocity's later
-  // terminal-velocity.coderturtle.io cutover, which required a real Route53
-  // change via agentic-infra-lab) - out of scope for this scaffolding pass.
-  // Every internal link MUST be base-aware (import.meta.env.BASE_URL), not a
-  // bare "/path" - the single most common Pages-project breakage.
-  site: "https://coderturtle.github.io",
-  base: "/half-life/",
+  // Custom domain (half-life.coderturtle.io) via GitHub Pages + Route53 CNAME,
+  // see .hekton/project.yaml's `deployment` block and agentic-infra-lab's
+  // patterns/github-pages-dns. Site now serves at the domain root, not under
+  // /half-life/ on coderturtle.github.io. Every internal link MUST still be
+  // base-aware (import.meta.env.BASE_URL), not a bare "/path".
+  site: "https://half-life.coderturtle.io",
+  base: "/",
   integrations: [mdx(), tailwind()],
   output: "static",
 });
