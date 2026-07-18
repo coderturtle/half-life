@@ -6,9 +6,16 @@
       `borrow-native`'s pipeline) — done 2026-07-08, locally validated (`npm run build` and
       `astro check` both clean, base-aware links confirmed in built HTML). This closes the
       Workshop Gremlin's own Completion Condition — all five roster steps are now done.
-- [ ] Get a human to enable GitHub Pages (Settings > Pages > Source: GitHub Actions) and trigger
-      the first real `workflow_dispatch` deploy — the Actions run itself is still unproven until
-      triggered. See RISK-0003 in `docs/risks.md`.
+- [x] GitHub Pages enabled and custom domain set (`half-life.coderturtle.io`) at some point after
+      this item was written — `gh api repos/coderturtle/half-life/pages` confirms `cname` set and
+      `protected_domain_state: "verified"` as of 2026-07-18. **But the repo-side cutover was never
+      done**, discovered live while building coderturtle.io's Workshops page: `curl` against the
+      custom domain returned 404 on every path, and `site/astro.config.mjs` still had `base:
+      "/half-life/"` with no `site/public/CNAME` — fixed 2026-07-18, same shape as
+      `terminal-velocity`/`closed-book`/`borrow-native`.
+- [ ] **Still open:** no deploy run has ever actually happened (`gh run list` returns empty) — the
+      Actions run itself remains unproven until a human triggers the first real `workflow_dispatch`
+      deploy under the now-corrected config. See RISK-0003 in `docs/risks.md`.
 - [x] Triage the 4 inherited npm vulnerabilities in `site/`'s Astro starter — done 2026-07-08,
       closed as accepted risk (none reachable given `output: "static"`; the `astro@7` upgrade
       path is known but requires a real `@astrojs/tailwind` → Tailwind-Vite-plugin migration, not
