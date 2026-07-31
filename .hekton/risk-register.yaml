@@ -1,0 +1,41 @@
+risk_register_version: 1
+project_name: half-life
+created_date: 2026-07-07
+
+risks:
+  - id: RISK-0001
+    title: "Initial governance baseline incomplete until first review"
+    category: governance
+    likelihood: medium
+    impact: medium
+    status: open
+    owner: coderturtle
+    mitigation: "Run governance preflight and end-session review during first material session."
+    raised_date: 2026-07-07
+    reviewed_date: 2026-07-07
+    links:
+      - "docs/risks.md"
+  - id: RISK-0002
+    title: "site/'s adapted Astro starter carries inherited npm vulnerabilities"
+    category: dependency
+    likelihood: high
+    impact: low
+    status: closed
+    owner: coderturtle
+    mitigation: "Triaged 2026-07-08: none of the 5 advisories are reachable (no define:vars/server-islands, output:static, dev server never runs in CI). Upgrade attempt (npm audit fix --force) reverted after it broke @astrojs/tailwind on Astro 7 - a real Tailwind-Vite-plugin migration, not a version bump. Accepted as-is; re-open if output mode changes from static."
+    raised_date: 2026-07-08
+    reviewed_date: 2026-07-08
+    links:
+      - "docs/risks.md"
+  - id: RISK-0003
+    title: "GitHub Actions Pages deploy unproven until human-triggered"
+    category: deployment
+    likelihood: high
+    impact: medium
+    status: closed
+    owner: coderturtle
+    mitigation: "Triggered 2026-07-18 (workflow_dispatch, run 29643482348); build+deploy both green, confirmed live via curl. Same session also fixed a real, live custom-domain 404 predating this risk (site/astro.config.mjs never cut over from project-page hosting) - see docs/decisions.md's 2026-07-18 entry."
+    raised_date: 2026-07-08
+    reviewed_date: 2026-07-18
+    links:
+      - "docs/risks.md"
