@@ -18,7 +18,7 @@ This repo has two goals:
    run (`terminal-velocity` was its first, `borrow-native` its second) and its first on a subject
    with no existing objective-checker tool to reuse (no compiler, no linter) — the empirical tier
    had to be invented from scratch. Findings from this run belong back in the canonical **Workshop
-   Gremlin** and **Coachgremlin** definitions (`~/hekton/gremlins/`) once there's enough real
+   Gremlin** and **Coachgremlin** definitions (`<hekton-machinery>/gremlins/`) once there's enough real
    evidence (a dry run) to justify a change, same discipline `borrow-native` used.
 
 ## Implementation Status
