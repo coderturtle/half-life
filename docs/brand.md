@@ -92,7 +92,7 @@ typography rhythm, "no section dividers, whitespace only."
 ## Gremlin and factory language rules
 
 - Coachgremlin and the Workshop Gremlin are real, documented agents with concrete responsibilities
-  (`~/hekton/gremlins/`) — reference them plainly when explaining how the workshop works, don't
+  (`<hekton-machinery>/gremlins/`) — reference them plainly when explaining how the workshop works, don't
   decorate every heading with gremlin language, and don't assume a learner already knows what a
   "Gremlin" is without a one-line explanation the first time the term appears in learner-facing
   copy.

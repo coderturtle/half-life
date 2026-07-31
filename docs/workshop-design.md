@@ -36,7 +36,7 @@ building RAG pipelines, or running long agent sessions — who want real intuiti
 Self-paced, public repo. Matches `terminal-velocity`/`borrow-native`'s precedent — no facilitator
 required, scales without a cohort.
 
-## Subject vs. method (see `~/hekton/gremlins/workshop/workshop-gremlin.md`'s "Variant: Tech/Language Workshops")
+## Subject vs. method (see `<hekton-machinery>/gremlins/workshop/workshop-gremlin.md`'s "Variant: Tech/Language Workshops")
 
 Named separately, per this factory's standing rule since `borrow-native`:
 
